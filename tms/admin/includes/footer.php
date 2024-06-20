@@ -1,3 +1,3 @@
 <div class="copyrights">
-	 <p>© 2024 TMS. All Rights Reserved |  <a href="#">TMS</a> </p>
+	 <p>© 2024 Horizon. All Rights Reserved |  <a href="#">HORIZON</a> </p>
 </div>	

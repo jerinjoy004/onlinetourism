@@ -1,0 +1,25 @@
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 16px;
+  padding: 0 32px;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.navbarContainer > li > a {
+  background-color: transparent;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.navbarContainer > li > a:hover {
+background-color: #EE4A10 !important;
+}

@@ -1,0 +1,14 @@
+.header-about {
+  /* background-color: lightblue; */
+  /* display: flex; */
+  width: 100%;
+}
+
+.wrapper {
+ background-color: rgb(43, 3, 80); 
+}
+
+.detailText {
+    color: red !important;
+    background-color: brown;
+}

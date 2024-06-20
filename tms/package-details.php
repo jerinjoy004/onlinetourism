@@ -42,7 +42,7 @@ if (isset($_POST['submit2'])) {
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>TMS | Package Details</title>
+    <title>Package Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -88,7 +88,7 @@ if (isset($_POST['submit2'])) {
 <?php include('includes/header.php'); ?>
 <div class="banner-3">
     <div class="container">
-        <h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">TMS - Package Details</h1>
+        <h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">Package Details</h1>
     </div>
 </div>
 
@@ -118,6 +118,7 @@ if (isset($_POST['submit2'])) {
                         <p><b>Package Type :</b> <?php echo htmlentities($result->PackageType); ?></p>
                         <p><b>Package Location :</b> <?php echo htmlentities($result->PackageLocation); ?></p>
                         <p><b>Features:</b> <?php echo htmlentities($result->PackageFeatures); ?></p>
+                        <p><b>Duration:</b> <?php echo htmlentities($result->Duration); ?></p>
                         <div class="ban-bottom">
                             <div class="bnr-right">
                                 <label class="inputLabel">From</label>

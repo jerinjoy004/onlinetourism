@@ -179,6 +179,7 @@ CREATE TABLE `tbltourpackages` (
   `PackageFeatures` varchar(255) DEFAULT NULL,
   `PackageDetails` mediumtext DEFAULT NULL,
   `PackageImage` varchar(100) DEFAULT NULL,
+  'Duration' int(5) DEFAULT NULL,
   `Creationdate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
