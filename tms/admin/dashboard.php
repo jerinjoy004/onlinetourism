@@ -108,7 +108,7 @@ $cnt2=$query2->rowCount();
 							</div>
 							<div class="four-text">
 								<h3>Total packages</h3>
-																	<?php $sql3 = "SELECT PackageId from tbltourpackages";
+																	<?php $sql3 = "SELECT PackageId from tourpackages";
 $query3= $dbh -> prepare($sql3);
 $query3->execute();
 $results3=$query3->fetchAll(PDO::FETCH_OBJ);

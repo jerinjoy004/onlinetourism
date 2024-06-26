@@ -56,11 +56,7 @@ error:function (){}
 									<div class="login-grids">
 										<div class="login">
 											<div class="login-left">
-												<ul>
-													<li><a class="fb" href="#"><i></i>Facebook</a></li>
-													<li><a class="goog" href="#"><i></i>Google</a></li>
-													
-												</ul>
+
 											</div>
 											<div class="login-right">
 												<form name="signup" method="post">

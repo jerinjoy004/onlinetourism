@@ -98,9 +98,9 @@ if (isset($_POST['submit2'])) {
         else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
         <?php 
         $pid = intval($_GET['pkgid']);
-        $sql = "SELECT * from tbltourpackages where PackageId=:pid";
+        $sql = "SELECT * from tourpackages where PackageId=:pid";
         $query = $dbh->prepare($sql);
-        $query->bindParam(':pid', $pid, PDO::PARAM_STR);
+        $query->bindParam(':package_id', $pid, PDO::PARAM_STR);
         $query->execute();
         $results = $query->fetchAll(PDO::FETCH_OBJ);
         $cnt = 1;

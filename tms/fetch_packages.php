@@ -6,7 +6,7 @@ if (isset($_GET['location'])) {
 
     // Fetch packages based on selected location
     try {
-        $sql = "SELECT * FROM tbltourpackages WHERE PackageLocation = :location";
+        $sql = "SELECT * FROM tourpackages WHERE PackageLocation = :location";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':location', $location, PDO::PARAM_STR);
         $stmt->execute();

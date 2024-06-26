@@ -96,7 +96,7 @@ include ('includes/config.php');
 
 			<h3>Recommended Packages</h3>
 
-			<?php $sql = "SELECT * from tbltourpackages order by rand() limit 4";
+			<?php $sql = "SELECT * from tourpackages order by rand() limit 4";
 			$query = $dbh->prepare($sql);
 			$query->execute();
 			$results = $query->fetchAll(PDO::FETCH_OBJ);

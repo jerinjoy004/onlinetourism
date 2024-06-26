@@ -1,27 +1,41 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
 	{	
 header('location:index.php');
 }
 else{
-	$imgid=intval($_GET['imgid']);
 if(isset($_POST['submit']))
 {
-
+$pname=$_POST['packagename'];
+$ptype=$_POST['packagetype'];	
+$plocation=$_POST['packagelocation'];
+$pprice=$_POST['packageprice'];	
+$pfeatures=$_POST['packagefeatures'];
+$pdetails=$_POST['packagedetails'];	
 $pimage=$_FILES["packageimage"]["name"];
 move_uploaded_file($_FILES["packageimage"]["tmp_name"],"pacakgeimages/".$_FILES["packageimage"]["name"]);
-$sql="update TblTourPackages set PackageImage=:pimage where PackageId=:imgid";
+$sql="INSERT INTO tourpackages(PackageName,PackageType,PackageLocation,PackagePrice,PackageFetures,PackageDetails,PackageImage) VALUES(:pname,:ptype,:plocation,:pprice,:pfeatures,:pdetails,:pimage)";
 $query = $dbh->prepare($sql);
-
-$query->bindParam(':imgid',$imgid,PDO::PARAM_STR);
+$query->bindParam(':pname',$pname,PDO::PARAM_STR);
+$query->bindParam(':ptype',$ptype,PDO::PARAM_STR);
+$query->bindParam(':plocation',$plocation,PDO::PARAM_STR);
+$query->bindParam(':pprice',$pprice,PDO::PARAM_STR);
+$query->bindParam(':pfeatures',$pfeatures,PDO::PARAM_STR);
+$query->bindParam(':pdetails',$pdetails,PDO::PARAM_STR);
 $query->bindParam(':pimage',$pimage,PDO::PARAM_STR);
 $query->execute();
+$lastInsertId = $dbh->lastInsertId();
+if($lastInsertId)
+{
 $msg="Package Created Successfully";
-
-
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
 
 }
 
@@ -75,50 +89,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 <!--heder end here-->
 	<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Update Package Image </li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a><i class="fa fa-angle-right"></i>Update Package </li>
             </ol>
 		<!--grid-->
  	<div class="grid-form">
  
 <!---->
   <div class="grid-form1">
-  	       <h3>Update Package Image </h3>
+  	       <h3>Create Package</h3>
   	        	  <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
   	         <div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 							<form class="form-horizontal" name="package" method="post" enctype="multipart/form-data">
-						<?php 
-$imgid=intval($_GET['imgid']);
-$sql = "SELECT PackageImage from TblTourPackages where PackageId=:imgid";
-$query = $dbh -> prepare($sql);
-$query -> bindParam(':imgid', $imgid, PDO::PARAM_STR);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{	?>	
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Name</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="packagename" id="packagename" placeholder="Create Package" required>
+									</div>
+								</div>
 <div class="form-group">
-<label for="focusedinput" class="col-sm-2 control-label"> Package Image </label>
-<div class="col-sm-8">
-<img src="pacakgeimages/<?php echo htmlentities($result->PackageImage);?>" width="200">
-</div>
-</div>
-																					
+									<label for="focusedinput" class="col-sm-2 control-label">Package Type</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="packagetype" id="packagetype" placeholder=" Package Type eg- Family Package / Couple Package" required>
+									</div>
+								</div>
+
 <div class="form-group">
-									<label for="focusedinput" class="col-sm-2 control-label">New Image</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Package Location</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="packagelocation" id="packagelocation" placeholder=" Package Location" required>
+									</div>
+								</div>
+
+<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Price in INR</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="packageprice" id="packageprice" placeholder=" Package Price is INR" required>
+									</div>
+								</div>
+
+<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Features</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" name="packagefeatures" id="packagefeatures" placeholder="Package Features Eg-free Pickup-drop facility" required>
+									</div>
+								</div>		
+
+
+<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Details</label>
+									<div class="col-sm-8">
+										<textarea class="form-control" rows="5" cols="50" name="packagedetails" id="packagedetails" placeholder="Package Details" required></textarea> 
+									</div>
+								</div>															
+<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Package Image</label>
 									<div class="col-sm-8">
 										<input type="file" name="packageimage" id="packageimage" required>
 									</div>
 								</div>	
-								<?php }} ?>
 
 								<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
-				<button type="submit" name="submit" class="btn-primary btn">Update</button>
+				<button type="submit" name="submit" class="btn-primary btn">Create</button>
 
+				<button type="reset" class="btn-inverse btn">Reset</button>
 			</div>
 		</div>
 						

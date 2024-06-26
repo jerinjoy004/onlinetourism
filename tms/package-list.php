@@ -36,7 +36,7 @@ try {
 
 // Fetch distinct PackageLocation
 try {
-    $sql = "SELECT DISTINCT PackageLocation FROM tbltourpackages";
+    $sql = "SELECT DISTINCT PackageLocation FROM tourpackages";
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
     $locations = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -99,7 +99,7 @@ try {
             $duration = isset($_GET['duration']) ? $_GET['duration'] : '';
 
             // Build the SQL query based on filters
-            $sql = "SELECT * FROM tbltourpackages WHERE 1=1";
+            $sql = "SELECT * FROM tourpackages WHERE 1=1";
 
             // Adding conditions based on user inputs
             if ($location) {
