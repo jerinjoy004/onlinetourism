@@ -2,7 +2,7 @@
 session_start();
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
-	{	
+    {   
 header('location:index.php');
 }
 else{
@@ -34,119 +34,142 @@ else{
    <div class="page-container">
    <!--/content-inner-->
 <div class="left-content">
-	   <div class="mother-grid-inner">
+       <div class="mother-grid-inner">
 <!--header start here-->
 <?php include('includes/header.php');?>
 <!--header end here-->
-		<ol class="breadcrumb">
+        <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard.php">Home</a> <i class="fa fa-angle-right"></i></li>
             </ol>
 <!--four-grids here-->
-		<div class="four-grids">
-					<div class="col-md-3 four-grid">
-						<div class="four-agileits">
-							<div class="icon">
-								<i class="glyphicon glyphicon-user" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>User</h3>
+        <div class="four-grids">
+                    <div class="col-md-3 four-grid">
+                        <div class="four-agileits">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>User</h3>
 
-								<?php $sql = "SELECT id from tblusers";
+                                <?php $sql = "SELECT id from tblusers";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=$query->rowCount();
-					?>			<h4> <?php echo htmlentities($cnt);?> </h4>
-				
-								
-							</div>
-							
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-agileinfo">
-							<div class="icon">
-								<i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Bookings</h3>
-										<?php $sql1 = "SELECT BookingId from tblbooking";
+                    ?>          <h4> <?php echo htmlentities($cnt);?> </h4>
+                
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3 four-grid">
+                        <div class="four-agileinfo">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>Bookings</h3>
+                                        <?php $sql1 = "SELECT BookingId from tblbooking";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
 $results1=$query1->fetchAll(PDO::FETCH_OBJ);
 $cnt1=$query1->rowCount();
-					?>
-								<h4><?php echo htmlentities($cnt1);?></h4>
+                    ?>
+                                <h4><?php echo htmlentities($cnt1);?></h4>
 
-							</div>
-							
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-w3ls">
-							<div class="icon">
-								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Enquiries</h3>
-												<?php $sql2 = "SELECT id from tblenquiry";
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3 four-grid">
+                        <div class="four-w3ls">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>Enquiries</h3>
+                                                <?php $sql2 = "SELECT id from tblenquiry";
 $query2= $dbh -> prepare($sql2);
 $query2->execute();
 $results2=$query2->fetchAll(PDO::FETCH_OBJ);
 $cnt2=$query2->rowCount();
-					?>
-								<h4><?php echo htmlentities($cnt2);?></h4>
-								
-							</div>
-							
-						</div>
-					</div>
-					<div class="col-md-3 four-grid">
-						<div class="four-wthree">
-							<div class="icon">
-								<i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Total packages</h3>
-																	<?php $sql3 = "SELECT PackageId from tourpackages";
+                    ?>
+                                <h4><?php echo htmlentities($cnt2);?></h4>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3 four-grid">
+                        <div class="four-wthree">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>Total packages</h3>
+                                                                    <?php $sql3 = "SELECT PackageId from tourpackages";
 $query3= $dbh -> prepare($sql3);
 $query3->execute();
 $results3=$query3->fetchAll(PDO::FETCH_OBJ);
 $cnt3=$query3->rowCount();
-					?>
-								<h4><?php echo htmlentities($cnt3);?></h4>
-								
-							</div>
-							
-						</div>
-					</div>
-						<div class="clearfix"></div>
-				</div>
+                    ?>
+                                <h4><?php echo htmlentities($cnt3);?></h4>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                        <div class="clearfix"></div>
+                </div>
 
-		<div class="four-grids">
-					<div class="col-md-3 four-grid">
-						<div class="four-w3ls">
-							<div class="icon">
-								<i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
-							</div>
-							<div class="four-text">
-								<h3>Issues Raised</h3>
-												<?php $sql5 = "SELECT id from tblissues";
+        <div class="four-grids">
+                    <div class="col-md-3 four-grid">
+                        <div class="four-w3ls">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>Issues Raised</h3>
+                                                <?php $sql5 = "SELECT id from tblissues";
 $query5= $dbh -> prepare($sql5);
 $query5->execute();
 $results5=$query5->fetchAll(PDO::FETCH_OBJ);
 $cnt5=$query5->rowCount();
-					?>
-								<h4><?php echo htmlentities($cnt5);?></h4>
-								
-							</div>
-							
-						</div>
-					</div>
+                    ?>
+                                <h4><?php echo htmlentities($cnt5);?></h4>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- New section for agency count -->
+                    <div class="col-md-3 four-grid">
+                        <div class="four-wthree">
+                            <div class="icon">
+                                <i class="glyphicon glyphicon-tower" aria-hidden="true"></i>
+                            </div>
+                            <div class="four-text">
+                                <h3>Agencies</h3>
+                                <?php $sql4 = "SELECT id from agency";
+$query4= $dbh -> prepare($sql4);
+$query4->execute();
+$results4=$query4->fetchAll(PDO::FETCH_OBJ);
+$cnt4=$query4->rowCount();
+                    ?>
+                                <h4><?php echo htmlentities($cnt4);?></h4>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
 
 
-					<div class="clearfix"></div>
-				</div>
+                    <div class="clearfix"></div>
+                </div>
+
+
 <!--//four-grids here-->
 
 
@@ -159,60 +182,60 @@ $cnt5=$query5->rowCount();
 </div>
 </div>
 
-			<!--/sidebar-menu-->
-				<?php include('includes/sidebarmenu.php');?>
-							  <div class="clearfix"></div>		
-							</div>
-							<script>
-							var toggle = true;
-										
-							$(".sidebar-icon").click(function() {                
-							  if (toggle)
-							  {
-								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
-								$("#menu span").css({"position":"absolute"});
-							  }
-							  else
-							  {
-								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
-								setTimeout(function() {
-								  $("#menu span").css({"position":"relative"});
-								}, 400);
-							  }
-											
-											toggle = !toggle;
-										});
-							</script>
+            <!--/sidebar-menu-->
+                <?php include('includes/sidebarmenu.php');?>
+                              <div class="clearfix"></div>      
+                            </div>
+                            <script>
+                            var toggle = true;
+                                        
+                            $(".sidebar-icon").click(function() {                
+                              if (toggle)
+                              {
+                                $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+                                $("#menu span").css({"position":"absolute"});
+                              }
+                              else
+                              {
+                                $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+                                setTimeout(function() {
+                                  $("#menu span").css({"position":"relative"});
+                                }, 400);
+                              }
+                                            
+                                            toggle = !toggle;
+                                        });
+                            </script>
 <!--js -->
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>
 <!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.min.js"></script>
-   <!-- /Bootstrap Core JavaScript -->	   
-<!-- morris JavaScript -->	
+   <!-- /Bootstrap Core JavaScript -->     
+<!-- morris JavaScript -->  
 <script src="js/raphael-min.js"></script>
 <script src="js/morris.js"></script>
 <script>
-	$(document).ready(function() {
-		//BOX BUTTON SHOW AND CLOSE
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   });
-	   
-	    //CHARTS
-	    function gd(year, day, month) {
-			return new Date(year, month - 1, day).getTime();
-		}
-		
-	   
-	});
-	</script>
+    $(document).ready(function() {
+        //BOX BUTTON SHOW AND CLOSE
+       jQuery('.small-graph-box').hover(function() {
+          jQuery(this).find('.box-button').fadeIn('fast');
+       }, function() {
+          jQuery(this).find('.box-button').fadeOut('fast');
+       });
+       jQuery('.small-graph-box .box-close').click(function() {
+          jQuery(this).closest('.small-graph-box').fadeOut(200);
+          return false;
+       });
+       
+        //CHARTS
+        function gd(year, day, month) {
+            return new Date(year, month - 1, day).getTime();
+        }
+        
+       
+    });
+    </script>
 </body>
 </html>
 <?php } ?>

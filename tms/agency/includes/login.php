@@ -30,8 +30,10 @@ if (isset($_POST['signin'])) {
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) == 1) {
+        $agency = mysqli_fetch_assoc($result);
         $_SESSION['agency_login'] = $username;
-        header("Location: ../dashboard.php");
+        $_SESSION['agency_id'] = $agency['id']; // Store agency_id in session
+        header("Location: dashboard.php");
         exit;
     } else {
         $signin_error = "Invalid username or password. Please try again.";
@@ -83,5 +85,7 @@ if (isset($_POST['signin'])) {
 
         <button type="submit" name="signin">Signin</button>
     </form>
+
+    <a href="../../../tms">Back to Home</a>
 </body>
 </html>
