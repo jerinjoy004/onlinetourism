@@ -197,13 +197,12 @@ $total_bookings = mysqli_fetch_assoc($result_bookings)['total_bookings'];
                             <th>Package Name</th>
                             <th>User Email</th>
                             <th>From Date</th>
-                            <th>To Date</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $query_recent_bookings = "SELECT * FROM bookings WHERE agency_id = '{$agency['agency_id']}' ORDER BY BookingId DESC LIMIT 5";
+                        $query_recent_bookings = "SELECT * FROM tblbookings WHERE AgencyId = '{$agency['id']}' ORDER BY BookingId DESC LIMIT 5";
                         $result_recent_bookings = mysqli_query($conn, $query_recent_bookings);
                         if (mysqli_num_rows($result_recent_bookings) > 0) {
                             while ($booking = mysqli_fetch_assoc($result_recent_bookings)) {
@@ -211,17 +210,29 @@ $total_bookings = mysqli_fetch_assoc($result_bookings)['total_bookings'];
                                 echo "<td>{$booking['BookingId']}</td>";
                                 // Fetch package details
                                 $package_id = $booking['PackageId'];
-                                $query_package = "SELECT PackageName FROM packages WHERE PackageId = '$package_id'";
+                                $query_package = "SELECT PackageName FROM tourpackages WHERE PackageId = '$package_id'";
                                 $result_package = mysqli_query($conn, $query_package);
                                 $package_name = mysqli_fetch_assoc($result_package)['PackageName'];
                                 echo "<td>{$package_name}</td>";
                                 echo "<td>{$booking['UserEmail']}</td>";
                                 echo "<td>{$booking['FromDate']}</td>";
-                                echo "<td>{$booking['ToDate']}</td>";
-                                echo "<td>{$booking['status']}</td>";
+                                $status = $booking['Status'];
+                                $status_text = '';
+                                switch($status){
+                                    case 0:
+                                        $status_text = 'Pending';
+                                        break;
+                                    case 1:
+                                        $status_text = 'Confirmed';
+                                        break;
+                                    case 2:
+                                        $status_text = 'Cancelled';
+                                        break;}
+                                echo "<td>{$status_text}</td>";
+                                }
                                 echo "</tr>";
                             }
-                        } else {
+                        else {
                             echo "<tr><td colspan='6'>No bookings found.</td></tr>";
                         }
                         ?>

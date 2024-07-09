@@ -33,7 +33,7 @@ if (isset($_POST['signin'])) {
         $agency = mysqli_fetch_assoc($result);
         $_SESSION['agency_login'] = $username;
         $_SESSION['agency_id'] = $agency['id']; // Store agency_id in session
-        header("Location: dashboard.php");
+        header("Location: ../dashboard.php");
         exit;
     } else {
         $signin_error = "Invalid username or password. Please try again.";

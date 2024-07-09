@@ -70,7 +70,7 @@ $cnt=$query->rowCount();
                             </div>
                             <div class="four-text">
                                 <h3>Bookings</h3>
-                                        <?php $sql1 = "SELECT BookingId from tblbooking";
+                                        <?php $sql1 = "SELECT BookingId from tblbookings";
 $query1 = $dbh -> prepare($sql1);
 $query1->execute();
 $results1=$query1->fetchAll(PDO::FETCH_OBJ);
